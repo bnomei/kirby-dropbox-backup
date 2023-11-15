@@ -1,0 +1,50 @@
+{
+    "name": "bnomei/kirby-dropbox-backup",
+    "type": "kirby-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "homepage": "https://github.com/bnomei/kirby-dropbox-backup",
+    "description": "Copy an existing backup to Dropbox",
+    "authors": [
+        {
+            "name": "Bruno Meilick",
+            "email": "b@bnomei.com"
+        }
+    ],
+    "keywords": [
+        "kirby",
+        "kirby-cms",
+        "kirby-plugin",
+        "dropbox",
+        "backup",
+        "cron",
+        "zip"
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "getkirby/composer-installer": true
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "getkirby/composer-installer": "^1.2"
+    },
+    "require-dev": {
+        "getkirby/cms": "^4.0.0-beta.2",
+        "laravel/pint": "^1.11",
+        "spatie/ray": "^1.37"
+    },
+    "scripts": {
+        "fix": "./vendor/bin/pint",
+        "dist": [
+            "composer install --no-dev --optimize-autoloader",
+            "git rm -rf --cached .; git add .;"
+        ]
+    },
+    "suggests": {
+        "bnomei/kirby3-janitor": "For the command to create a backup",
+        "bnomei/kirby3-dotenv": "Loading Dropbox Access token from .env file"
+    }
+}
